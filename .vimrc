@@ -1,3 +1,5 @@
+let mapleader = "\\"
+
 " CTRL-T Fuzzy Finder
 noremap <C-t>		:FuzzyFinderTextMate<CR>
 vnoremap <C-t>		<C-C>:FuzzyFinderTextMate<CR>
@@ -7,18 +9,29 @@ noremap <C-d>		:NERDTreeToggle<CR>
 vnoremap <C-d>		<C-C>:NERDTreeToggle<CR>
 inoremap <C-d>		<C-O>:NERDTreeToggle<CR>
 
+" MRU List
 :com MRU FuzzyFinderMruFile
 
 " snippets
-":filetype plugin on
+:filetype plugin on
 
+" tabs and folding
 set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 set nowrap
-set autoindent
-set smartindent
-set cindent
+set autoindent smartindent cindent
+set number
 
-behave mswin
+"behave mswin
+
+" Folding
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
+" Save folding on exits
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
 
 " backspace in Visual mode deletes selection
 vnoremap <BS> d
@@ -70,9 +83,9 @@ snoremap <C-A> <C-C>gggH<C-O>G
 xnoremap <C-A> <C-C>ggVG
 
 " Indent/Unindent
-vmap <silent> <Tab>        :<C-u>call Cream_indent("v")<CR>
-imap <silent> <S-Tab> <C-O>:call Cream_unindent("i")<CR>
-vmap <silent> <S-Tab>      :<C-u>call Cream_unindent("v")<CR>
+" vmap <silent> <Tab>        :<C-u>call Cream_indent("v")<CR>
+" imap <silent> <S-Tab> <C-O>:call Cream_unindent("i")<CR>
+" vmap <silent> <S-Tab>      :<C-u>call Cream_unindent("v")<CR>
 
 " Indent/Unindent {{{1
 
